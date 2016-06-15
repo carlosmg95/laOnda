@@ -29,7 +29,7 @@ module.exports = {
                             defaultValue: false
                          },
                 cargo:  { 
-                          type: Sequelize.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx')
+                          type: Sequelize.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo')
                         },
                 createdAt: {
                               type: Sequelize.DATE,

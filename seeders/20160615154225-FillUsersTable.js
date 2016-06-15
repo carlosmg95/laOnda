@@ -17,6 +17,7 @@ module.exports = {
             password: encryptPassword('1234', 'aaaa'),
             salt:     'aaaa',
             isAdmin: true,
+            cargo: 'Sin cargo',
             createdAt: new Date(), updatedAt: new Date()
           }
         ]);

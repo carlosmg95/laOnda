@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
 				defaultValue: false
 			},
 			cargo: {
-				type: DataTypes.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx')
+				type: DataTypes.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo')
 			}
 		},
 		{	instanceMethods: {
