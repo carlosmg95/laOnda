@@ -1,0 +1,47 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header {
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+img#licencia {
+	border-width: 0px;
+}
+
+img.enlace {
+	width: 20px;
+	height: auto;
+	margin-left: 5px;
+}
+
+img#titulo {
+	width: 500px;
+	height: auto;
+}
+
+div#derecha {
+	float: right;
+}
+
+div.clear {
+	clear: both;
+}
+
+nav {
+	background-color: rgb(255,255,255);
+	padding: 5px;
+	margin-bottom: 8px;
+	box-shadow: 0 0 5px 5px #888;
+}
+
+article#twitter {
+	width: 25%;
+	height: 700px;
+	float: right;
+}
