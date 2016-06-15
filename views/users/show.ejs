@@ -1,0 +1,15 @@
+<div id="usuario">
+	<table>
+		<tr>
+			<td><strong>Nombre de usuario:</strong></td>
+			<td><%= user.username %></td>
+			<% if(user.isAdmin) { %>
+				<td><em>(Admin)</em></td>
+			<% } %>
+		</tr>
+		<tr>
+			<td><strong>Cargo:</strong></td>
+			<td><%= user.cargo %></td>
+		</tr>
+	</table>
+</div>
