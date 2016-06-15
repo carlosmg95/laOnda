@@ -1,7 +1,7 @@
 <div id="usuarios">
-	<li>
+	<ul>
 		<% for(var i in users) { %>
-			<ul><a href="/users/<%= users[i].id %>"><%= users[i].username %></a></ul>
+			<li><a href="/users/<%= users[i].id %>"><%= users[i].username %></a></li>
 		<% } %>
-	</li>
+	</ul>
 </div>
