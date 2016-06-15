@@ -29,7 +29,10 @@ module.exports = {
                             defaultValue: false
                          },
                 cargo:  { 
-                          type: Sequelize.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo')
+                          type: Sequelize.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'),
+                          validate: { 
+                            notEmpty: {msg: "Falta cargo"}
+                          }
                         },
                 createdAt: {
                               type: Sequelize.DATE,

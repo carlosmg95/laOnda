@@ -1,0 +1,60 @@
+<script>
+	function confirmPassword() {
+		var pw1 = document.getElementById('user_password').value;
+		var pw2 = document.getElementById('user_confirm_password').value;
+
+		if (!pw1 || !pw2) {
+			alert('Debe rellenar los campos de Password y Confirmación.');
+			return false;
+		}
+
+		if (pw1 === pw2) {
+			return true;
+		} else {
+			alert('Los passwords introducidos no coinciden.');
+			return false;
+		}
+	}
+</script>
+
+<table>
+	<tr>
+		<% if (!user.id) { %>
+			<td><label for="preg">Username:</label></td>
+			<td><input type="text" id="username" name="username" value="<%= user.username %>"/></td>
+		<% } else { %>
+			<td>Username: <%= user.username %></td>
+		<% } %>
+	</tr>
+
+	<tr>
+		<td><label for="user_password">Password:</label></td>
+		<td><input type="password" id="user_password" name="password"/></td>
+	</tr>
+
+	<tr>
+		<td><label for="user_confirm_password">Confirmar Password:</label></td>
+		<td><input type="password" id="user_confirm_password" /></td>
+	</tr>
+
+	<tr>
+		<td><label for="cargo">Cargo:</label></td>
+		<td><input list="cargos" name="cargo"></td>
+		<datalist id="cargos">
+			<option value="Presidentx">
+			<option value="Vicepresidentx">
+			<option value="Secretarix">
+			<option value="Tesorerx">
+			<option value="Vocal">
+			<option value="Sin cargo">
+		</datalist>
+	</tr>
+</table>
+
+<div>
+	<a href="/"><button type="button">Cancelar</button></a>
+</div>
+
+<div>
+	<input type="submit" value="Guardar" onclick="return confirmPassword()">
+</div>

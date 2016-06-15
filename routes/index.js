@@ -15,5 +15,7 @@ router.get('/', function(req, res, next) {
 /* Definición de rutas de usuarios */
 router.get('/users',				userController.index);	// Listado de usuarios
 router.get('/users/:userId(\\d+)',	userController.show);	// Ver un usuario
+router.get('/users/new',			userController.new);	// Formulario sign-up
+router.post('/users',				userController.create);	// Registrar usuario
 
 module.exports = router;

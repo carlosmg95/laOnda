@@ -25,7 +25,8 @@ module.exports = function(sequelize, DataTypes) {
 				defaultValue: false
 			},
 			cargo: {
-				type: DataTypes.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo')
+				type: DataTypes.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'),
+				validate: { notEmpty: { msg: "Falta cargo" }}
 			}
 		},
 		{	instanceMethods: {
