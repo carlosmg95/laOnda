@@ -3,7 +3,31 @@
 
 <head>
 	<title>La Onda de Teleco</title>
-	<link rel='stylesheet' href='/stylesheets/style.css'/>	
+	<link rel='stylesheet' href='/stylesheets/style.css'/>
+	<script type="text/javascript" src="/javascripts/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#titulo").on("dblclick", function() {
+				var delay = 250;
+
+				setTimeout(function() {
+					$("#titulo").attr("src","/images/logo-1.png");
+				}, delay);	
+
+				setTimeout(function() {
+					$("#titulo").attr("src","/images/logo-2.png");
+				}, delay*2);
+
+				setTimeout(function() {
+					$("#titulo").attr("src","/images/logo-3.png");
+				}, delay*3);
+
+				setTimeout(function() {
+					$("#titulo").attr("src","/images/logo.png");
+				}, delay*4);
+			});		
+		});
+	</script>
 </head>
 
 <body>
