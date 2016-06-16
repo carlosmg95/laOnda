@@ -19,11 +19,11 @@
 
 <table>
 	<tr>
-		<% if (!user.id) { %>
-			<td><label for="preg">Username:</label></td>
+		<td><label for="preg">Username:</label></td>
+		<% if (!user.id) { %>			
 			<td><input type="text" id="username" name="username" value="<%= user.username %>"/></td>
 		<% } else { %>
-			<td>Username: <%= user.username %></td>
+			<td><%= user.username %></td>
 		<% } %>
 	</tr>
 
@@ -39,7 +39,7 @@
 
 	<tr>
 		<td><label for="cargo">Cargo:</label></td>
-		<td><input list="cargos" name="cargo"></td>
+		<td><input list="cargos" name="cargo" placeholder="<%= user.cargo %>"></td>
 		<datalist id="cargos">
 			<option value="Presidentx">
 			<option value="Vicepresidentx">
