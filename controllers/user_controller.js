@@ -44,7 +44,7 @@ exports.create = function(req, res, next) {
 	models.User.find({ where: { username: req.body.username }}).then(function(existing_user) {
 		if(existing_user) {
 			var emsg = 'El usuario \"' + req.body.username + '\" ya exite.';
-			req.flash('error', emsg);
+			//req.flash('error', emsg);
 			res.render('users/new', { user: user });
 		} else {
 			// Guardar en la BBDD
