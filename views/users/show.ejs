@@ -1,4 +1,6 @@
 <div id="usuario">
+	<h3>Perfil:</h3>
+
 	<table>
 		<tr>
 			<td><strong>Nombre de usuario:</strong></td>
@@ -12,4 +14,9 @@
 			<td><%= user.cargo %></td>
 		</tr>
 	</table>
+
+	<div class="botones">
+		<a href="/users/<%= user.id %>/edit"><button id="editar">Editar</button></a>
+		<a href="/users/<%= user.id %>?_method=DELETE"><button id="borrar" onClick="return confirm('Borrar cuenta: <%= user.username %>');">Borrar</button></a>
+	</div>
 </div>

@@ -63,3 +63,49 @@ exports.create = function(req, res, next) {
 		next(error);
 	});
 };
+
+// GET /users/:id/edit
+exports.edit = function(req, res, next) {
+	res.render('users/edit', { user: req.user });
+};
+
+// PUT /users/:id
+exports.update = function(req, res, next) {
+	//req.user.username = req.body.username;	// NO EDITAR
+	req.user.password = req.body.password;
+	req.user.cargo = req.body.cargo;
+
+	// El password no puede estar vacío
+	if(!req.body.password) {
+		//req.flash('error', 'El Password debe rellenarse.');
+		return res.render('users/edit', { user: req.user });
+	}
+	req.user.save({ fields: [ 'password', 'salt', 'cargo' ]}).then(function(user) {
+		//req.flash('succes', 'Usuario editado con éxito.');
+		res.redirect('/users');
+	}).catch(Sequelize.ValidationError, function(error) {
+		//req.flash('error', 'Errores en el formulario:');
+		for(var i in error.errors) {
+			//req.flash('error', error.errors[i].value);
+		};
+		res.render('users/edit', { user: user });
+	}).catch(function(error) {
+		next(error);
+	});
+};
+
+// DELETE /users/:id
+exports.destroy = function(req, res, next)  {
+	req.user.destroy().then(function() {
+		
+		// Borrando usuario logueado
+		/*if(req.session.user && (req.session.user.id === req.user.id)) {
+			delete req.session.user;
+		}*/
+
+		//req.flash('succes', 'Usuario eliminado con éxito.');
+		res.redirect('/');
+	}).catch(function(error) {
+		next(error);
+	});
+};
