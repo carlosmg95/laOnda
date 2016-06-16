@@ -40,8 +40,53 @@ nav {
 	box-shadow: 0 0 5px 5px #888;
 }
 
+footer {
+	position: fixed;
+	clear: both;
+	left: 0;
+	bottom: 0;
+}
+
 article#twitter {
 	width: 25%;
-	height: 700px;
+	height: 500px;
 	float: right;
+	border-style: dotted;
+	border-width: 1px;
+	margin-right: 20px;
+}
+
+article#twitter:hover {	
+	border-style: solid;
+	box-shadow: 0 0 5px 5px #888;
+}
+
+li {
+	list-style: none;
+	margin-bottom: 5px;
+}
+
+a.user {
+	text-decoration: none;
+	font-size: 20px;
+	color: rgb(0,0,0);
+}
+
+a.user:hover {
+	font-size: 40px;
+}
+
+a.user:active {
+	color: green;
+}
+
+div#usuarios {
+	background-color: rgba(100,100,100,0);
+	padding: 10px;
+	border-top: solid;
+	border-width: 1px;
+	width: 500px;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 20px;
 }
