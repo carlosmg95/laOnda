@@ -1,16 +1,23 @@
 <script>
 	function confirmPassword() {
-		var pw1 = document.getElementById('user_password').value;
-		var pw2 = document.getElementById('user_confirm_password').value;
-		var nCaracteres = 4;
+		var pw1 = $('#user_password').val();
+		var pw2 = $('#user_confirm_password').val();
+		var username = $('#username').val();
+		var nCaracteresPass = 4;
+		var nCaracteresName = 35;
 
 		if (!pw1 || !pw2) {
 			alert('Debe rellenar los campos de Password y Confirmación.');
 			return false;
 		}
 
-		if(pw1.length <= nCaracteres - 1) {
-			alert('La contraseña debe tener mínimo ' + nCaracteres + ' caracteres');
+		if(pw1.length <= nCaracteresPass - 1) {
+			alert('La contraseña debe tener mínimo ' + nCaracteresPass + ' caracteres');
+			return false;
+		}
+
+		if(username.length >= nCaracteresName - 1) {
+			alert('El nombre no puede tener más de ' + nCaracteresName + ' caracteres');
 			return false;
 		}
 

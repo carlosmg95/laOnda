@@ -4,9 +4,12 @@ var crypto = require('crypto');
 module.exports = function(sequelize, DataTypes) {
 	return sequelize.define('User',
 		{	username: {
-				type: DataTypes.STRING,
+				type: DataTypes.STRING(35),
 				unique: true,
-				validate: { notEmpty: { msg: "Falta username" }}
+				validate: {
+					len: [1, 35],
+					notEmpty: { msg: "Falta username" }
+				}
 			},
 			password: {
 				type: DataTypes.STRING,
@@ -45,5 +48,6 @@ module.exports = function(sequelize, DataTypes) {
  * y devuelve 40 caracteres hexadecimales.
  */
 function encryptPassword(password, salt) {
+	console.log('Pass: ' + crypto.createHmac('sha1', salt).update(password).digest('hex'));
     return crypto.createHmac('sha1', salt).update(password).digest('hex');
 };
