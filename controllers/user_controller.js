@@ -93,3 +93,19 @@ exports.update = function(req, res, next) {
 		next(error);
 	});
 };
+
+// DELETE /users/:id
+exports.destroy = function(req, res, next)  {
+	req.user.destroy().then(function() {
+		
+		// Borrando usuario logueado
+		/*if(req.session.user && (req.session.user.id === req.user.id)) {
+			delete req.session.user;
+		}*/
+
+		//req.flash('succes', 'Usuario eliminado con éxito.');
+		res.redirect('/');
+	}).catch(function(error) {
+		next(error);
+	});
+};
