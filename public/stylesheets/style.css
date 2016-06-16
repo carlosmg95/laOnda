@@ -119,7 +119,7 @@ label {
 	margin-right: 15px;
 }
 
-div.botones #guardar, div.botones #cancelar, div.botones #editar {
+div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar {
 	border-radius: 50%;
 	border-style: none;
 	padding: 8px;
@@ -141,6 +141,12 @@ div.botones #cancelar:hover {
 div.botones #editar:hover {
 	background-color: rgba(14,175,148,0.8);
 	box-shadow: 0 0 0 0  #888;
+}
+
+div.botones #borrar:hover {
+	background-color: rgba(0,0,0,0.8);
+	box-shadow: 0 0 0 0  #888;
+	color: rgb(255,255,255);
 }
 
 div.botones {
