@@ -2,9 +2,15 @@
 	function confirmPassword() {
 		var pw1 = document.getElementById('user_password').value;
 		var pw2 = document.getElementById('user_confirm_password').value;
+		var nCaracteres = 4;
 
 		if (!pw1 || !pw2) {
 			alert('Debe rellenar los campos de Password y Confirmación.');
+			return false;
+		}
+
+		if(pw1.length <= nCaracteres - 1) {
+			alert('La contraseña debe tener mínimo ' + nCaracteres + ' caracteres');
 			return false;
 		}
 
