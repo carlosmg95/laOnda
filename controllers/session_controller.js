@@ -48,3 +48,60 @@ var authenticate = function(login, password) {
 		}
 	});
 };
+
+// Comprueba si hay un miembro logueado
+exports.isLogin = function(req, res, next) {
+	if(req.session.user) {
+		next();
+	} else {
+		console.log('Ruta prohibida: No es miembro.');
+		res.send(403);
+	}
+};
+
+// Comprueba que no haya un miembro logueado
+exports.isNotLogin = function(req, res, next) {
+	if(!req.session.user) {
+		next();
+	} else {
+		console.log('Ruta prohibida: Ya hay alguien logueado.');
+		res.send(403);
+	}
+};
+
+// Comprueba si el usuario logueado es admin
+exports.isAdmin = function(req, res, next) {
+	if(req.session.user.isAdmin) {
+		next();
+	} else {
+		console.log('Ruta prohibida: No es admin.');
+		res.send(403);
+	}
+};
+
+// Comprueba que el usuario logueado sea admin o el dueño del perfil
+exports.isAdminOrMySelf = function(req, res, next) {
+	var isAdmin = req.session.user.isAdmin;
+	var userId = req.user.id;
+	var loggedUserId = req.session.user.id;
+
+	if(isAdmin || (userId === loggedUserId)) {
+		next();
+	} else {
+		console.log('Ruta prohibida: No es el usuario logueado, ni un administrador.');
+		res.send(403);
+	}
+};
+
+exports.isAdminAndNotMyself = function(req, res, next) {
+	var isAdmin = req.session.user.isAdmin;
+	var userId = req.user.id;
+	var loggedUserId = req.session.user.id;
+
+	if(isAdmin && (userId !== loggedUserId)) {
+		next();
+	} else {
+		console.log('Ruta prohibida: No es el usuario logueado, ni un administrador.');
+		res.send(403);
+	}
+};
