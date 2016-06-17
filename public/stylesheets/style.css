@@ -10,7 +10,7 @@ header {
 	margin-bottom: 30px;
 }
 
-h3 {
+h3, h2 {
 	text-align: center;
 	font-size: 30px;
 }

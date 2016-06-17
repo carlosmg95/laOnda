@@ -1,0 +1,28 @@
+<div class="formulario">
+	<h3>Login</h3>
+
+	<form method="POST" action="/session">
+		
+		<input type="hidden" name="redir" value="<%= redir %>"/>
+
+		<div>
+			<label for="login">Username:</label>
+			<br/>
+			<input type="text" id="login" name="login" size="30"/>
+		</div>
+
+		<br/>
+
+		<div>
+			<label for="password">Password:</label>
+			<br/>
+			<input type="password" id="password" name="password" size="30"/>
+		</div>
+
+		<div class="botones">
+			<input type="submit" name="commit" value="login" id="login" />
+			<a href="/"><button type="button" id="cancelar">Cancelar</button></a>
+		</div>
+
+	</form>
+</div>
