@@ -28,6 +28,22 @@ app.use(session({secret: 'La Onda de Teleco', resave: false, saveUninitialized: 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 
+app.use(function(req, res, next) {
+  if(req.session.user) {
+    var timeout = 120000;
+    var currentTime = new Date().getTime();
+    if((currentTime - req.session.user.inicio) >= timeout ) {
+      delete req.session.user;
+      next();
+    } else {
+      req.session.user.inicio = currentTime;
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 // Helper dinámico:
 app.use(function(req, res, next) {
   // Hace visible req.session en las vistas
