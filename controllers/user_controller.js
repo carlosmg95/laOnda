@@ -8,7 +8,7 @@ exports.load = function(req, res, next, userId) {
 			req.user = user;
 			next();
 		} else {
-			req.flash('error', 'No existe el usuario con id=' + id + '.');
+			//req.flash('error', 'No existe el usuario con id=' + id + '.');
 			throw new Error('No existe userId=' + userId);
 		}
 	}).catch(function(error) {
@@ -17,7 +17,7 @@ exports.load = function(req, res, next, userId) {
 };
 
 // GET /users
-exports.index = function(req, res, nex) {
+exports.index = function(req, res, next) {
 	models.User.findAll({order: ['username']}).then(function(users) {
 		res.render('users/index', { users: users });
 	}).catch(function(error) {

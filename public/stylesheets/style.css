@@ -4,6 +4,10 @@ body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+a {
+	text-decoration: none;
+}
+
 header {
 	text-align: center;
 	padding: 20px;
@@ -38,8 +42,7 @@ div#izquierda {
 	float: left;
 }
 
-div#izquierda a {
-	text-decoration: none;
+div#izquierda a, a.session {
 	padding: 5px;
 	padding-right: 10px;
 	padding-left: 10px;
@@ -92,7 +95,6 @@ li {
 }
 
 a.user {
-	text-decoration: none;
 	font-size: 20px;
 	color: rgb(0,0,0);
 }
@@ -139,7 +141,7 @@ label {
 	margin-right: 15px;
 }
 
-div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar {
+div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar, div.botones #login {
 	border-radius: 50%;
 	border-style: none;
 	padding: 8px;
@@ -158,7 +160,7 @@ div.botones #cancelar:hover {
 	box-shadow: 0 0 0 0  #888;
 }
 
-div.botones #editar:hover {
+div.botones #editar:hover, div.botones #login:hover {
 	background-color: rgba(14,175,148,0.8);
 	box-shadow: 0 0 0 0  #888;
 }
@@ -173,4 +175,8 @@ div.botones {
 	width: 170px;	
 	margin: auto;
 	margin-top: 15px;
+}
+
+a.session {
+	margin-right: 25px;
 }
