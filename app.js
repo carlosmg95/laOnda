@@ -17,6 +17,13 @@ app.set('view engine', 'ejs');
 
 app.use(partials());
 
+// Helper dinámico:
+app.use(function(req, res, next) {
+  // Hace visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
+
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
