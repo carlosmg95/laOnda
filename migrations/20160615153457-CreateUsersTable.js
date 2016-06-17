@@ -2,6 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
+      var cargos = ['Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'];
       return queryInterface.createTable('Users', 
               { id: {
                       type: Sequelize.INTEGER,
@@ -30,7 +31,7 @@ module.exports = {
                             defaultValue: false
                          },
                 cargo:  { 
-                          type: Sequelize.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'),
+                          type: Sequelize.ENUM(cargos),
                           validate: { 
                             notEmpty: {msg: "Falta cargo"}
                           }

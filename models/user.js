@@ -1,7 +1,8 @@
 var crypto = require('crypto');
 
 // Definicion de la clase User:
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {	
+	var cargos = ['Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'];
 	return sequelize.define('User',
 		{	username: {
 				type: DataTypes.STRING(35),
@@ -28,8 +29,18 @@ module.exports = function(sequelize, DataTypes) {
 				defaultValue: false
 			},
 			cargo: {
-				type: DataTypes.ENUM('Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'),
-				validate: { notEmpty: { msg: "Falta cargo" }}
+				type: DataTypes.ENUM(cargos),
+				validate: {
+					notEmpty: { msg: "Falta cargo" },
+					isCorrect: function(cargo) {
+						for(var i in cargos) {
+							if(cargo === cargos[i]) {
+								return true;
+							}
+						}
+						return next('El cargo no es correcto');
+					}
+				}
 			}
 		},
 		{	instanceMethods: {
@@ -48,6 +59,5 @@ module.exports = function(sequelize, DataTypes) {
  * y devuelve 40 caracteres hexadecimales.
  */
 function encryptPassword(password, salt) {
-	console.log('Pass: ' + crypto.createHmac('sha1', salt).update(password).digest('hex'));
     return crypto.createHmac('sha1', salt).update(password).digest('hex');
 };
