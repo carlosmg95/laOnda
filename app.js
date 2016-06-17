@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
+var session = require('express-session');
 var methodOverride = require('method-override');
 
 var routes = require('./routes/index');
@@ -17,21 +18,22 @@ app.set('view engine', 'ejs');
 
 app.use(partials());
 
-// Helper dinámico:
-app.use(function(req, res, next) {
-  // Hace visible req.session en las vistas
-  res.locals.session = req.session;
-  next();
-});
-
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'La Onda de Teleco', resave: false, saveUninitialized: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
+
+// Helper dinámico:
+app.use(function(req, res, next) {
+  // Hace visible req.session en las vistas
+  res.locals.session = req.session;
+  next();
+});
 
 app.use('/', routes);
 

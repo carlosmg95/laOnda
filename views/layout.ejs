@@ -33,10 +33,18 @@
 <body>
 	<nav>
 		<div id="izquierda">
+			<% if(session.user) { %>
+				<a href="/users/<%= session.user.id %>" id="username"><%= session.user.username %></a>
+			<% } %>			
 			<a href="/">Inicio</a>
 			<a href="/users">Miembros</a>
 		</div>
 		<div id="derecha">
+			<% if(session.user) { %>
+				<a href="/session?_method=DELETE" class="session">Logout</a>
+			<% } else { %>	
+				<a href="/session" class="session">Login</a>
+			<% } %>		
 			<a href="https://twitter.com/LaOndaDeTeleco" target="_blank"><img class="enlace" src="/images/twitter.png"></a>
 			<a href="https://telegram.me/LaOndaDeTeleco" target="_blank"><img class="enlace" src="/images/telegram.png"></a>
 		</div>
