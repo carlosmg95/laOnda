@@ -54,12 +54,9 @@
 		<td><label for="cargo">Cargo:</label></td>
 		<td><input list="cargos" name="cargo" placeholder="<%= user.cargo %>"></td>
 		<datalist id="cargos">
-			<option value="Presidentx">
-			<option value="Vicepresidentx">
-			<option value="Secretarix">
-			<option value="Tesorerx">
-			<option value="Vocal">
-			<option value="Sin cargo">
+			<% for(var i in cargos) { %>
+				<option value="<%= cargos[i] %>">
+			<% } %>
 		</datalist>
 	</tr>
 </table>

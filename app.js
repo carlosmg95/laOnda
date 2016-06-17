@@ -8,6 +8,8 @@ var partials = require('express-partials');
 var session = require('express-session');
 var methodOverride = require('method-override');
 
+var variablesGlobales = require('./public/javascripts/variablesGlobales.js');
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -46,8 +48,12 @@ app.use(function(req, res, next) {
 
 // Helper dinámico:
 app.use(function(req, res, next) {
+  // Hacer visibles los cargos en las vistas
+  res.locals.cargos = variablesGlobales.cargos;
+
   // Hace visible req.session en las vistas
   res.locals.session = req.session;
+  
   next();
 });
 

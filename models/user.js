@@ -1,8 +1,9 @@
 var crypto = require('crypto');
+var variablesGlobales = require('../public/javascripts/variablesGlobales.js');
 
 // Definicion de la clase User:
 module.exports = function(sequelize, DataTypes) {	
-	var cargos = ['Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'];
+	var cargos = variablesGlobales.cargos;
 	return sequelize.define('User',
 		{	username: {
 				type: DataTypes.STRING(35),
@@ -34,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 					notEmpty: { msg: "Falta cargo" },
 					isCorrect: function(cargo) {
 						for(var i in cargos) {
-							if(cargo === cargos[i]) {
+							if(cargo === cargos[i]) {								
 								return true;
 							}
 						}

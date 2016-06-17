@@ -1,0 +1,1 @@
+exports.cargos = ['Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'];
