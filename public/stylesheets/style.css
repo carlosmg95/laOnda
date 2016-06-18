@@ -94,20 +94,20 @@ li {
 	margin-bottom: 5px;
 }
 
-a.user {
+a.user, a.commission {
 	font-size: 20px;
 	color: rgb(0,0,0);
 }
 
-a.user:hover {
+a.user:hover, a.commission:hover {
 	font-size: 40px;
 }
 
-a.user:active {
+a.user:active, a.commission:active {
 	color: green;
 }
 
-div#usuarios {
+div#usuarios, div#comisiones {
 	padding: 10px;
 	border-top: solid;
 	border-width: 1px;
@@ -117,7 +117,7 @@ div#usuarios {
 	margin-bottom: 20px;
 }
 
-div#usuario, div.formulario {
+div#usuario, div.formulario, div#comision {
 	background-color: rgb(255,100,100);
 	padding: 30px;
 	width: 500px;
