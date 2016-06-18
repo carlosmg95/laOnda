@@ -21,8 +21,14 @@ if(!process.env.DATABASE_URL) {
 
 var sequelize = new Sequelize(url, {storage: storage, omitNull: true});
 
-// Importar la definicion de la tabla Quiz de user.js
+// Importar la definicion de las tablas
 var User = sequelize.import(path.join(__dirname,'user'));
+var Commission = sequelize.import(path.join(__dirname,'commission'));
+
+// Relaciones entre modelos
+/*User.belongsToMany(Commission);
+Commission.belongsToMany(User);*/
 
 // Exportar definición de tablas
-exports.User = User;
+exports.User = User;				// Exportar la tabla User
+exports.Commission = Commission;	// Exportar la tabla Commission

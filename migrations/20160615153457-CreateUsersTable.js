@@ -1,8 +1,9 @@
 'use strict';
+var variablesGlobales = require('../public/javascripts/variablesGlobales.js');
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-      var cargos = ['Presidentx', 'Vicepresidentx', 'Secretarix', 'Tesorerx', 'Vocal', 'Sin cargo'];
+      var cargos = variablesGlobales.cargos;
       return queryInterface.createTable('Users', 
               { id: {
                       type: Sequelize.INTEGER,

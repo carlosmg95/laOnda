@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 // Autoload el user asociado a :userId
 exports.load = function(req, res, next, userId) {
-	models.User.findById(userId).then(function(user) {
+	models.User.findById(userId/*, { include: [models.Commission] }*/).then(function(user) {
 		if(user) {
 			req.user = user;
 			next();
@@ -18,14 +18,14 @@ exports.load = function(req, res, next, userId) {
 
 // GET /users
 exports.index = function(req, res, next) {
-	models.User.findAll({order: ['username']}).then(function(users) {
+	models.User.findAll({ order: ['username'] }).then(function(users) {
 		res.render('users/index', { users: users });
 	}).catch(function(error) {
 		next(error);
 	});
 };
 
-// GET /user/:id
+// GET /users/:id
 exports.show = function(req, res, next) {
 	res.render('users/show', { user: req.user });	
 };
@@ -33,7 +33,7 @@ exports.show = function(req, res, next) {
 // GET /users/new
 exports.new = function(req, res, next) {
 	var user = models.User.build({ username: '', password: '' });
-	res.render('users/new', {user: user});
+	res.render('users/new', { user: user });
 };
 
 // POST /users
