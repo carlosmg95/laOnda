@@ -1,0 +1,7 @@
+<div id="comisiones">
+	<ul>
+		<% for(var i in commissions) { %>
+			<li><a href="/comisiones/<%= commissions[i].id %>" class="commission"><%= commissions[i].name %></a></li>
+		<% } %>
+	</ul>
+</div>

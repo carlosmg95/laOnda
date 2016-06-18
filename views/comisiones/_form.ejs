@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<td><label for="name">Nombre:</label></td>
+		<% if (!commission.id) { %>			
+			<td><input type="text" id="name" name="name" value="<%= commission.name %>"/></td>
+		<% } else { %>
+			<td><%= commission.name %></td>
+		<% } %>
+	</tr>
+
+	<tr>
+		<td><label for="explanation">Explicación:</label></td>
+		<td><input type="text" id="explanation" name="explanation"/></td>
+	</tr>
+</table>
+
+<div class="botones">
+	<input type="submit" value="Guardar" id="guardar">
+	<a href="/"><button type="button" id="cancelar">Cancelar</button></a>
+</div>

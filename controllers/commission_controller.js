@@ -16,10 +16,10 @@ exports.load = function(req, res, next, commissionId) {
 	});
 };
 
-// GET /commissions
+// GET /comisiones
 exports.index = function(req, res, next) {
 	models.Commission.findAll({ order: ['name'] }).then(function(commissions) {
-		res.render('commissions/index', { commissions: commissions });
+		res.render('comisiones/index', { commissions: commissions });
 	}).catch(function(error) {
 		next(error);
 	});
