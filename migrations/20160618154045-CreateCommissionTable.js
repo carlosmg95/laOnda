@@ -11,10 +11,9 @@ module.exports = {
                       unique: true
                     },
                 name: {
-                        type: Sequelize.STRING(15),
+                        type: Sequelize.STRING,
                         unique: true,
                         validate: {
-                          len: [1, 15],
                           notEmpty: {msg: "Falta nombre"}
                         }
                       },

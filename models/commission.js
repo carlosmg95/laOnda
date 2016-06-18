@@ -4,10 +4,9 @@ module.exports = function(sequelize, DataTypes) {
 	return sequelize.define('Commission',
 	{
 		name: {
-			type: DataTypes.STRING(15),
+			type: DataTypes.STRING,
 			unique: true,
 			validate: {
-				len: [1, 15],
 				notEmpty: { msg: "Falta nombre" }
 			}
 		},
