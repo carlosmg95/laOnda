@@ -4,4 +4,7 @@
 			<li><a href="/users/<%= users[i].id %>" class="user"><%= users[i].username %></a></li>
 		<% } %>
 	</ul>
+	<% if(session.user.isAdmin) { %>
+		<p id="new"><a href="/users/new"><button id="new">Nuevo miembro</button></a></p>
+	<% } %>
 </div>

@@ -180,3 +180,25 @@ div.botones {
 a.session {
 	margin-right: 25px;
 }
+
+button#new {
+	border-radius: 15%;
+	border-style: none;
+	padding: 8px;
+	box-shadow: 2px 2px 0 0 #888;
+	background-color: rgb(100,150,200);
+}
+
+button#new:hover {
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(255,0,0);
+	box-shadow: none;
+}
+
+p#new {
+	position: fixed;
+	clear: both;
+	right: 50px;
+	bottom: 50%;
+}

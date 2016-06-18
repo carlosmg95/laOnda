@@ -4,4 +4,7 @@
 			<li><a href="/comisiones/<%= commissions[i].id %>" class="commission"><%= commissions[i].name %></a></li>
 		<% } %>
 	</ul>
+	<% if(session.user.isAdmin) { %>
+		<p id="new"><a href="/comisiones/new"><button id="new">Nueva comisión</button></a></p>
+	<% } %>
 </div>
