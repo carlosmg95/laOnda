@@ -27,7 +27,7 @@ exports.index = function(req, res, next) {
 
 // GET /users/:id
 exports.show = function(req, res, next) {
-	res.render('users/show', { user: req.user });	
+	res.render('users/show', { user: req.user });
 };
 
 // GET /users/new
@@ -99,9 +99,9 @@ exports.destroy = function(req, res, next)  {
 	req.user.destroy().then(function() {
 		
 		// Borrando usuario logueado
-		/*if(req.session.user && (req.session.user.id === req.user.id)) {
+		if(req.session.user && (req.session.user.id === req.user.id)) {
 			delete req.session.user;
-		}*/
+		}
 
 		//req.flash('succes', 'Usuario eliminado con éxito.');
 		res.redirect('/');

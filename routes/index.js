@@ -16,18 +16,27 @@ router.get('/', function(req, res, next) {
 });
 
 /* Definición de rutas de usuarios */
-router.get('/users',					userController.index);		// Listado de usuarios
-router.get('/users/:userId(\\d+)',		userController.show);		// Ver un usuario
-router.get('/users/new',				userController.new);		// Formulario sign-up
-router.post('/users',					userController.create);		// Registrar usuario
-router.get('/users/:userId(\\d+)/edit',	userController.edit);		// Editar cuenta
-router.put('/users/:userId(\\d+)',		userController.update);		// Actualizar cuenta
-router.delete('/users/:userId(\\d+)',	userController.destroy);	// Borrar cuenta
+router.get('/users',					sessionController.isLogin,
+										userController.index);					// Listado de usuarios
+router.get('/users/:userId(\\d+)',		sessionController.isLogin,
+										userController.show);					// Ver un usuario
+router.get('/users/new',				sessionController.isLogin,
+										sessionController.isAdmin,
+										userController.new);					// Formulario sign-up
+router.post('/users',					userController.create);					// Registrar usuario
+router.get('/users/:userId(\\d+)/edit',	sessionController.isLogin,
+										sessionController.isAdminOrMySelf,
+										userController.edit);					// Editar cuenta
+router.put('/users/:userId(\\d+)',		userController.update);					// Actualizar cuenta
+router.delete('/users/:userId(\\d+)',	sessionController.isLogin,
+										sessionController.isAdminAndNotMyself,
+										userController.destroy);				// Borrar cuenta
 
 /* Definición de rutas de sesiones */
-router.get('/session',		sessionController.new);		// Formulario login
-router.post('/session',		sessionController.create);	// Crear sesión
-router.delete('/session',	sessionController.destroy);	// Destruir sesión
+router.get('/session',		sessionController.isNotLogin,
+							sessionController.new);			// Formulario login
+router.post('/session',		sessionController.create);		// Crear sesión
+router.delete('/session',	sessionController.destroy);		// Destruir sesión
 
 /* Definición de rutas de comisiones */
 router.get('/comisiones',							commissionController.index);	// Listado de comisiones

@@ -37,7 +37,9 @@
 				<a href="/users/<%= session.user.id %>" id="username"><%= session.user.username %></a>
 			<% } %>			
 			<a href="/">Inicio</a>
-			<a href="/users">Miembros</a>
+			<% if(session.user) { %>
+				<a href="/users">Miembros</a>
+			<% } %>
 		</div>
 		<div id="derecha">
 			<% if(session.user) { %>
