@@ -128,7 +128,7 @@ div#usuario, div.formulario, div#comision {
 	font-size: 18px;
 }
 
-div#usuario td {
+div#usuario td, div#comision td {
 	padding-right: 18px;
 }
 

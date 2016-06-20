@@ -3,5 +3,17 @@
 
 	<p><%= commission.explanation %></p>
 
-	<a href="/comisiones/<%= commission.id %>/add"><button id="annadir">Añadir miembrx</button></a>
+	<table>
+		<tr><td><strong>Miembrxs:</strong></td></tr>
+		<% for(var i in commission.Users) { %>
+			<tr>	
+				<td></td>
+				<td><%= commission.Users[i].username %></td>
+			</tr>
+		<% } %>	
+	</table>
+
+	<% if(session.user.isAdmin) { %>
+		<a href="/comisiones/<%= commission.id %>/add"><button id="annadir">Añadir miembrx</button></a>
+	<% } %>
 </div>

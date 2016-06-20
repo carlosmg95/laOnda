@@ -13,7 +13,14 @@
 			<td><strong>Cargo:</strong></td>
 			<td><%= user.cargo %></td>
 		</tr>
-	</table>
+		<tr><td><strong>Comisiones:</strong></td></tr>
+		<% for(var i in user.Commissions) { %>
+			<tr>	
+				<td></td>
+				<td><%= user.Commissions[i].name %></td>
+			</tr>
+		<% } %>	
+	</table>	
 
 	<div class="botones">
 		<% if(session.user.isAdmin || (session.user.id === user.id)) { %>
