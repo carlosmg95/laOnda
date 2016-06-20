@@ -1,0 +1,16 @@
+<div id="usuarios">
+	<form method="post" action="/comisiones/<%= commission.id %>?_method=PUT">
+		<input type="hidden" name="editar" value="miembros">
+		<div class="checkbox">
+			<% for(var i in users) { %>
+				<input type="checkbox" name="on" id="check<%= users[i].id %>" value="<%= users[i].id %>" <% if(users[i].pertenece){ %> checked <%}%>>
+					<label for="check<%= users[i].id %>" class="user"><span style="font-size: 20px;"><%= users[i].username %></span></label>
+				</br> 	
+			<% } %>
+		</div>
+		<div class="botones">
+			<input type="submit" value="Guardar" id="guardar">
+			<a href="/"><button type="button" id="cancelar">Cancelar</button></a>
+		</div>
+	</form>
+</div>

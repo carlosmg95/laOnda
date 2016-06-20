@@ -39,17 +39,23 @@ router.post('/session',		sessionController.create);		// Crear sesión
 router.delete('/session',	sessionController.destroy);		// Destruir sesión
 
 /* Definición de rutas de comisiones */
-router.get('/comisiones',							sessionController.isLogin,
-													commissionController.index);	// Listado de comisiones
-router.get('/comisiones/:commissionId(\\d+)',		sessionController.isLogin,
-													commissionController.show);		// Ver comisión
-router.get('/comisiones/new',						sessionController.isAdmin
-													,commissionController.new);		// Nueva comisión
-router.post('/comisiones',							commissionController.create);	// Crear comisión
-router.get('/comisiones/:commissionId(\\d+)/edit',	sessionController.isAdmin,
-													commissionController.edit);		// Editar comisión 
-router.put('/comisiones/:commissionId(\\d+)',		commissionController.update);	// Actualizar comisión
-router.delete('/comisiones/:commissionId(\\d+)',	sessionController.isAdmin,
-													commissionController.destroy);	// Borrar comisión
+router.get('/comisiones',								sessionController.isLogin,
+														commissionController.index);	// Listado de comisiones
+router.get('/comisiones/:commissionId(\\d+)',			sessionController.isLogin,
+														commissionController.show);		// Ver comisión
+router.get('/comisiones/new',							sessionController.isLogin,
+														sessionController.isAdmin,
+														commissionController.new);		// Nueva comisión
+router.post('/comisiones',								commissionController.create);	// Crear comisión
+router.get('/comisiones/:commissionId(\\d+)/edit',		sessionController.isLogin,
+														sessionController.isAdmin,
+														commissionController.edit);		// Editar comisión 
+router.put('/comisiones/:commissionId(\\d+)',			commissionController.update);	// Actualizar comisión
+router.delete('/comisiones/:commissionId(\\d+)',		sessionController.isLogin,
+														sessionController.isAdmin,
+														commissionController.destroy);	// Borrar comisión
+router.get('/comisiones/:commissionId(\\d+)/add',		sessionController.isLogin,
+														sessionController.isAdmin,
+														commissionController.add);		// Añadir nuevo miembro a la comisión
 
 module.exports = router;

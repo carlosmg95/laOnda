@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 // Autoload el commission asociado a :commissionId
 exports.load = function(req, res, next, commissionId) {
-	models.Commission.findById(commissionId/*, { include: [models.User] }*/).then(function(commission) {
+	models.Commission.findById(commissionId, { include: [models.User] }).then(function(commission) {
 		if(commission) {
 			req.commission = commission;
 			next();
@@ -70,22 +70,37 @@ exports.edit = function(req, res, next) {
 };
 
 // PUT /comisiones/:id
-exports.update = function(req, res, next) {
-	//req.commission.name = req.body.name;	// NO EDITAR
-	req.commission.explanation = req.body.explanation || req.commission.explanation;
-	
-	req.commission.save({ fields: [ 'explanation' ]}).then(function(commission) {
-		//req.flash('succes', 'Usuario editado con éxito.');
-		res.redirect('/comisiones');
-	}).catch(Sequelize.ValidationError, function(error) {
-		//req.flash('error', 'Errores en el formulario:');
-		for(var i in error.errors) {
-			//req.flash('error', error.errors[i].value);
-		};
-		res.render('comisiones/edit', { commission: commission });
-	}).catch(function(error) {
-		next(error);
-	});
+exports.update = function(req, res, next) {	
+	if (req.body.editar === 'explicacion') {
+		//req.commission.name = req.body.name;	// NO EDITAR
+		req.commission.explanation = req.body.explanation || req.commission.explanation;
+		
+		req.commission.save({ fields: [ 'explanation' ]}).then(function(commission) {
+			//req.flash('succes', 'Usuario editado con éxito.');
+			res.redirect('/comisiones');
+		}).catch(Sequelize.ValidationError, function(error) {
+			//req.flash('error', 'Errores en el formulario:');
+			for(var i in error.errors) {
+				//req.flash('error', error.errors[i].value);
+			};
+			res.render('comisiones/edit', { commission: commission });
+		}).catch(function(error) {
+			next(error);
+		});
+	} else if(req.body.editar === 'miembros') {
+		models.User.findAll().then(function(users) {
+			req.commission.removeUsers(users);
+			for(var i in users) {
+				for(var j in req.body.on) {
+					if(+users[i].id === +req.body.on[j]) {
+						req.commission.addUser(users[i]);
+					}
+				}
+			}
+			//req.flash('succes', 'Usuario editado con éxito.');
+			res.redirect('/comisiones');
+		});
+	}
 };
 
 // DELETE /comisiones/:id
@@ -95,5 +110,20 @@ exports.destroy = function(req, res, next)  {
 		res.redirect('/');
 	}).catch(function(error) {
 		next(error);
+	});
+};
+
+// GET /comisiones/:id/añadir
+exports.add = function(req, res, next) {
+	models.User.findAll({ order: ['username'] }).then(function(users) {
+		for(var i in users) {
+			users[i].pertenece = 0;
+			for(var j in req.commission.Users) {
+				if (users[i].id === req.commission.Users[j].id) {
+					users[i].pertenece = 1;
+				}
+			}
+		}
+		res.render('comisiones/add', { users: users, commission: req.commission });
 	});
 };

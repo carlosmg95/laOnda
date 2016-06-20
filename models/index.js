@@ -26,8 +26,8 @@ var User = sequelize.import(path.join(__dirname,'user'));
 var Commission = sequelize.import(path.join(__dirname,'commission'));
 
 // Relaciones entre modelos
-/*User.belongsToMany(Commission);
-Commission.belongsToMany(User);*/
+User.belongsToMany(Commission, { through: 'UsersCommissions' });
+Commission.belongsToMany(User, { through: 'UsersCommissions' });
 
 // Exportar definición de tablas
 exports.User = User;				// Exportar la tabla User

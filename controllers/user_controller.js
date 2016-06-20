@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 // Autoload el user asociado a :userId
 exports.load = function(req, res, next, userId) {
-	models.User.findById(userId/*, { include: [models.Commission] }*/).then(function(user) {
+	models.User.findById(userId, { include: [models.Commission] }).then(function(user) {
 		if(user) {
 			req.user = user;
 			next();
@@ -102,6 +102,12 @@ exports.destroy = function(req, res, next)  {
 		if(req.session.user && (req.session.user.id === req.user.id)) {
 			delete req.session.user;
 		}
+
+		req.user.getCommissions().then(function(commissions) {
+			for(var i in commissions) {
+				commissions[i].removeUser(req.user);
+			}
+		});
 
 		//req.flash('succes', 'Usuario eliminado con éxito.');
 		res.redirect('/');
