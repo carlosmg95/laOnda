@@ -141,7 +141,7 @@ label {
 	margin-right: 15px;
 }
 
-div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar, div.botones #login, button#annadir {
+div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar, div.botones #login, div.botones #annadir {
 	border-radius: 50%;
 	border-style: none;
 	padding: 8px;
@@ -172,7 +172,7 @@ div.botones #borrar:hover {
 }
 
 div.botones {
-	width: 170px;	
+	width: 200px;	
 	margin: auto;
 	margin-top: 15px;
 }
