@@ -105,7 +105,12 @@ exports.update = function(req, res, next) {
 
 // DELETE /comisiones/:id
 exports.destroy = function(req, res, next)  {
-	req.commission.destroy().then(function() {		
+	req.commission.destroy().then(function() {
+		req.commission.getUsers().then(function(users) {
+			for(var i in users) {
+				users[i].removeCommission(req.commission);
+			}
+		});
 		//req.flash('succes', 'Usuario eliminado con éxito.');
 		res.redirect('/');
 	}).catch(function(error) {
