@@ -1,6 +1,7 @@
+/* LAYOUT */
 body {
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -19,6 +20,20 @@ h3, h2 {
 	font-size: 30px;
 }
 
+nav {
+	background-color: rgb(255,255,255);
+	padding: 5px;
+	margin-bottom: 8px;
+	box-shadow: 0 0 5px 5px #888;
+}
+
+footer {
+	position: fixed;
+	clear: both;
+	left: 0;
+	bottom: 0;
+}
+
 img#licencia {
 	border-width: 0px;
 }
@@ -26,6 +41,10 @@ img#licencia {
 img#titulo {
 	width: 500px;
 	height: auto;
+}
+
+div#mobile {
+	display: none;	
 }
 
 div#derecha {
@@ -61,20 +80,7 @@ div.clear {
 	clear: both;
 }
 
-nav {
-	background-color: rgb(255,255,255);
-	padding: 5px;
-	margin-bottom: 8px;
-	box-shadow: 0 0 5px 5px #888;
-}
-
-footer {
-	position: fixed;
-	clear: both;
-	left: 0;
-	bottom: 0;
-}
-
+/* INDEX */
 article#twitter {
 	width: 25%;
 	height: 500px;
@@ -141,7 +147,13 @@ label {
 	margin-right: 15px;
 }
 
-div.botones #guardar, div.botones #cancelar, div.botones #editar, div.botones #borrar, div.botones #login, div.botones #annadir {
+div.botones {
+	width: 200px;	
+	margin: auto;
+	margin-top: 15px;
+}
+
+div.botones #guardar, div.botones button {
 	border-radius: 50%;
 	border-style: none;
 	padding: 8px;
@@ -169,12 +181,6 @@ div.botones #borrar:hover {
 	background-color: rgba(0,0,0,0.8);
 	box-shadow: 0 0 0 0  #888;
 	color: rgb(255,255,255);
-}
-
-div.botones {
-	width: 200px;	
-	margin: auto;
-	margin-top: 15px;
 }
 
 a.session {
@@ -233,10 +239,10 @@ label.user:before {
 }
 
 .checkbox label.user:before {
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 3px;
-    border-color: rgb(20,20,20);
+	border-radius: 50%;
+	border-style: solid;
+	border-width: 3px;
+	border-color: rgb(20,20,20);
 }
 
 input[type=checkbox]:checked + label.user:before {

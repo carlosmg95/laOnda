@@ -5,3 +5,6 @@ Procfile
 .env
 onda.sqlite
 testing
+commands_to_generate_keys.sh
+base_de_datos.sh
+certs

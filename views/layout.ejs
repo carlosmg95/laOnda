@@ -3,35 +3,57 @@
 
 <head>
 	<title>La Onda de Teleco</title>
-	<link rel='stylesheet' href='/stylesheets/style.css'/>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="screen and (min-device-width: 481px)">
+	<link href="/stylesheets/mobile-style.css" rel="stylesheet" type="text/css" media="handheld, only screen and (max-device-width: 480px)">
+	
 	<script type="text/javascript" src="/javascripts/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$("#titulo").on("dblclick", function() {
+			var aux = 1;
+			$('#titulo').on('dblclick', function() {
 				var delay = 250;
 
 				setTimeout(function() {
-					$("#titulo").attr("src","/images/logo-1.png");
+					$('#titulo').attr('src','/images/logo-1.png');
 				}, delay);	
 
 				setTimeout(function() {
-					$("#titulo").attr("src","/images/logo-2.png");
+					$('#titulo').attr('src','/images/logo-2.png');
 				}, delay*2);
 
 				setTimeout(function() {
-					$("#titulo").attr("src","/images/logo-3.png");
+					$('#titulo').attr('src','/images/logo-3.png');
 				}, delay*3);
 
 				setTimeout(function() {
-					$("#titulo").attr("src","/images/logo.png");
+					$('#titulo').attr('src','/images/logo.png');
 				}, delay*4);
-			});		
+			});
 		});
 	</script>
 </head>
 
 <body>
 	<nav>
+		<div id="mobile">				
+			<a href="/"><img src="/images/icon.png" id="icon"></a>
+			<% if(session.user) { %>
+				<a href="/session?_method=DELETE"><img src="/images/logout.png" id="logout"></a>
+			<% } else { %>	
+				<a href="/session" class="session"><img src="/images/usuario.png" id="icon-user"></a>
+			<% } %>
+			<div class="clear"></div>
+			<div id="enlaces">
+				<% if(session.user) { %>
+					<div><a href="/users/<%= session.user.id %>" id="username"><%= session.user.username %></a></div>
+					<div><a href="/users">Miembrxs</a></div>
+					<div><a href="/comisiones">Comisiones</a></div>
+				<% } %>
+			</div>
+		</div>
 		<div id="izquierda">
 			<% if(session.user) { %>
 				<a href="/users/<%= session.user.id %>" id="username"><%= session.user.username %></a>
@@ -53,9 +75,11 @@
 		</div>
 		<div class="clear"></div>
 	</nav>
+	<div class="clear"></div>
 	<header>
 		<img id="titulo" alt="La Onda" src="/images/logo.png">
 	</header>
+	<div class="clear"></div>
 	<section>
 		<%- body %>
 	</section>
